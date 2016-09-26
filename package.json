@@ -1,0 +1,25 @@
+{
+  "name": "less-test-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://kokarn@github.com/kokarn/less-test-service.git"
+  },
+  "author": "Kokarn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kokarn/less-test-service/issues"
+  },
+  "homepage": "https://github.com/kokarn/less-test-service#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "nodegit": "^0.16.0",
+    "tmp": "0.0.29"
+  }
+}
