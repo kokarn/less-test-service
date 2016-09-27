@@ -4,13 +4,71 @@
     <title>
         LESScss tester
     </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/materialize/0.97.7/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <form
-        method="post"
-        action="/build"
-    >
-        <textarea name="less"></textarea>
-        <textarea name="lesshint"></textarea>
-    </form>
+    <div class="container">
+        <div class="row">
+            <h1 class="center-align">
+                Lesshint debugger
+            </h1>
+        </div>
+        <div class="row">
+            <form
+                class="col s12"
+                method="post"
+                action="/build"
+            >
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input placeholder="Your name" id="name" type="text" class="validate">
+                        <label for="name">Your name</label>
+                    </div>
+                    <button class="btn waves-effect waves-light col s2 offset-s6" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <textarea id="lesshint" class="materialize-textarea"></textarea>
+                        <label for="textarea1">.lesshintrc</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <textarea id="less" class="materialize-textarea"></textarea>
+                        <label for="textarea1">less</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/g/fetch@0.9.0,jquery@3.1.1,materialize@0.97.7"></script>
+    <script>
+        (function(){
+            $(function(){
+                $( 'body' ).on( 'submit', function( event ){
+                    event.preventDefault();
+
+                    fetch( '/build', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify( {
+                            lesshintrc: $( '#lesshint' ).val(),
+                            less: $( '#less' ).val(),
+                            username: $( '#name' ).val()
+                        } )
+                    })
+                    .then( function( response ) {
+                        console.log( response );
+                    })
+                    .catch( function( exception ){
+                        console.log( exception );
+                    });
+                });
+            });
+        })();
+    </script>
 </body>

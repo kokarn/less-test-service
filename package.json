@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kokarn/less-test-service#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "nodegit": "^0.16.0",
     "tmp": "0.0.29"
